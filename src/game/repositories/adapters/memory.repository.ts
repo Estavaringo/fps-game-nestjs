@@ -5,7 +5,11 @@ export class MemoryRepository implements IGameRepository {
   items: Game[] = []
 
   async insert(games: Game[]): Promise<void> {
-    this.items.push(...games)
+    for (var game of games) {
+      if (this.items.findIndex(g => g.id === game.id) === -1) {
+        this.items.push(...games)
+      }
+    }
   }
 
   async findAll(): Promise<Game[]> {
