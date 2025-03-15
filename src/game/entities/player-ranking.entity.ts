@@ -1,8 +1,6 @@
-import { Player } from "./player.entity";
-
 export class PlayerRanking {
     position: number;
-    player: Player;
+    player: string;
     awards: string[];
     killStreak: number;
 }
