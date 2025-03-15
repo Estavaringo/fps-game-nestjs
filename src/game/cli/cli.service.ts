@@ -5,6 +5,7 @@ import { RankingService } from '../ranking/ranking.service';
 import * as readline from 'readline';
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import { Ranking } from '../entities/ranking.entity';
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -46,11 +47,13 @@ export class CliService {
                 await this.uploadLogFile();
                 break;
             case '2':
-                console.log(await this.rankingService.execute(false))
+                let rankings = await this.rankingService.execute(false)
+                this.displayRanking(rankings)
                 this.showMenu(1500);
                 break;
             case '3':
-                console.log(await this.rankingService.execute(true))
+                let globalRanking = await this.rankingService.execute(true)
+                this.displayRanking(globalRanking)
                 this.showMenu(1500);
                 break;
             case '4':
@@ -82,4 +85,15 @@ export class CliService {
     }
 
 
+    private displayRanking(rankings: Ranking[]) {
+        if (rankings.length == 0) {
+            console.log('There is no match information to show rankings.')
+            return;
+        }
+
+        for (var ranking of rankings) {
+            console.log(`Game ID: ${ranking.gameID}`);
+            console.table(ranking.players);
+        }
+    }
 }
