@@ -25,10 +25,10 @@ describe('LogParserService Unit Tests', () => {
 
     expect(games).toHaveLength(1);
     expect(games[0].id).toBe("11348965");
-    expect(games[0].start).toBe(new Date(2019, 3, 23, 15, 34, 22));
-    expect(games[0].end).toBe(new Date(2019, 3, 23, 15, 39, 22));
+    expect(games[0].start.getTime()).toBe(new Date(2019, 3, 23, 15, 34, 22).getTime());
+    expect(games[0].end?.getTime()).toBe(new Date(2019, 3, 23, 15, 39, 22).getTime());
     expect(games[0].players).toHaveLength(2);
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].players.find(p => p.name === "Roman")).toEqual({
       name: "Roman",
       frags: [{
         isFriendlyFire: false,
@@ -37,14 +37,11 @@ describe('LogParserService Unit Tests', () => {
         weapon: "M16",
       }],
       deaths: 0,
-      team: "",
     })
-
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
       deaths: 2,
-      team: "",
     })
   });
 
@@ -66,10 +63,10 @@ describe('LogParserService Unit Tests', () => {
 
     expect(games).toHaveLength(2);
     expect(games[0].id).toBe("11348965");
-    expect(games[0].start).toBe(new Date(2019, 3, 23, 15, 34, 22));
-    expect(games[0].end).toBe(new Date(2019, 3, 23, 15, 39, 22));
+    expect(games[0].start.getTime()).toBe(new Date(2019, 3, 23, 15, 34, 22).getTime());
+    expect(games[0].end?.getTime()).toBe(new Date(2019, 3, 23, 15, 39, 22).getTime());
     expect(games[0].players).toHaveLength(2);
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].players.find(p => p.name === "Roman")).toEqual({
       name: "Roman",
       frags: [{
         isFriendlyFire: false,
@@ -78,20 +75,20 @@ describe('LogParserService Unit Tests', () => {
         weapon: "M16",
       }],
       deaths: 0,
-      team: "",
+      team: undefined,
     })
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
       deaths: 2,
-      team: "",
+      team: undefined,
     })
 
     expect(games[1].id).toBe("11348966");
-    expect(games[1].start).toBe(new Date(2021, 3, 23, 16, 14, 22));
-    expect(games[1].end).toBe(new Date(2021, 3, 23, 16, 49, 22));
+    expect(games[1].start.getTime()).toBe(new Date(2021, 3, 23, 16, 14, 22).getTime());
+    expect(games[1].end?.getTime()).toBe(new Date(2021, 3, 23, 16, 49, 22).getTime());
     expect(games[1].players).toHaveLength(2);
-    expect(games[1].players).toContain<Player>({
+    expect(games[1].players.find(p => p.name === "Roman")).toEqual({
       name: "Roman",
       frags: [{
         isFriendlyFire: false,
@@ -100,13 +97,13 @@ describe('LogParserService Unit Tests', () => {
         weapon: "AK47",
       }],
       deaths: 1,
-      team: "",
+      team: undefined,
     })
-    expect(games[1].players).toContain<Player>({
+    expect(games[1].players.find(p => p.name === "Marcus")).toEqual({
       name: "Marcus",
       frags: [],
       deaths: 2,
-      team: "",
+      team: undefined,
     })
   });
 
