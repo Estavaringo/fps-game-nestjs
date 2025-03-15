@@ -1,0 +1,60 @@
+25/04/2023 10:00:00 - New match 11348967 has started (Team A vs. Team B)
+25/04/2023 10:01:15 - Alice(A) killed Bob(B) using Sniper Rifle
+25/04/2023 10:03:42 - Charlie(B) killed David(A) using Shotgun
+25/04/2023 10:05:28 - Eve(A) killed Frank(B) using Pistol
+25/04/2023 10:07:55 - George(B) killed Alice(A) using Grenade
+25/04/2023 10:10:30 - David(A) killed George(B) using SMG
+25/04/2023 10:12:10 - Eve(A) killed Charlie(B) using Assault Rifle
+25/04/2023 10:14:45 - Bob(B) killed David(A) using Sniper Rifle
+25/04/2023 10:16:20 - Alice(A) killed Frank(B) using Pistol
+25/04/2023 10:18:55 - George(B) killed Eve(A) using Shotgun
+25/04/2023 10:21:30 - David(A) killed Bob(B) using SMG
+25/04/2023 10:23:40 - Eve(A) killed George(B) using Grenade
+25/04/2023 10:25:00 - Match 11348967 has ended (Team A wins)
+
+26/04/2023 14:30:00 - New match 11348968 has started
+26/04/2023 14:32:20 - Player1 killed Player2 using Assault Rifle
+26/04/2023 14:35:10 - Player3 killed Player1 using Pistol
+26/04/2023 14:38:45 - <WORLD> killed Player3 by FALLING
+26/04/2023 14:40:15 - Player2 killed Player4 using Sniper Rifle
+26/04/2023 14:42:30 - Player5 killed Player2 using SMG
+26/04/2023 14:45:00 - Player4 killed Player5 using Shotgun
+26/04/2023 14:47:20 - Player1 killed Player4 using Assault Rifle
+26/04/2023 14:50:00 - Match 11348968 has ended
+
+27/04/2023 18:45:00 - New match 11348969 has started
+27/04/2023 18:47:30 - PlayerA killed PlayerB using Rocket Launcher
+27/04/2023 18:50:15 - PlayerC killed PlayerA using Knife
+27/04/2023 18:53:00 - PlayerB killed PlayerC using Assault Rifle
+27/04/2023 18:55:45 - PlayerA killed PlayerB using Sniper Rifle
+27/04/2023 18:58:20 - PlayerC killed PlayerD using Pistol
+27/04/2023 19:01:00 - PlayerD killed PlayerA using Shotgun
+27/04/2023 19:03:30 - PlayerB killed PlayerD using SMG
+27/04/2023 19:05:00 - Match 11348969 has ended
+
+28/04/2023 20:00:00 - New match 11348970 has started (25 players)
+28/04/2023 20:02:10 - Player01 killed Player02 using SMG
+28/04/2023 20:04:30 - Player03 killed Player04 using Shotgun
+28/04/2023 20:06:50 - Player05 killed Player06 using Pistol
+28/04/2023 20:09:10 - Player07 killed Player08 using Assault Rifle
+28/04/2023 20:11:30 - Player09 killed Player10 using Sniper Rifle
+28/04/2023 20:13:50 - Player11 killed Player12 using Knife
+28/04/2023 20:16:10 - Player13 killed Player14 using Grenade
+28/04/2023 20:18:30 - Player15 killed Player16 using Rocket Launcher
+28/04/2023 20:20:50 - Player17 killed Player18 using SMG
+28/04/2023 20:23:10 - Player19 killed Player20 using Shotgun
+28/04/2023 20:25:30 - <WORLD> killed Player21 by ZONE
+28/04/2023 20:27:50 - Player22 killed Player23 using Pistol
+28/04/2023 20:30:10 - Player24 killed Player25 using Assault Rifle
+28/04/2023 20:32:30 - Player01 killed Player03 using Sniper Rifle
+28/04/2023 20:34:50 - Player05 killed Player07 using Knife
+28/04/2023 20:37:10 - Player09 killed Player11 using Grenade
+28/04/2023 20:39:30 - Player13 killed Player15 using Rocket Launcher
+28/04/2023 20:41:50 - Player17 killed Player19 using SMG
+28/04/2023 20:44:10 - Player22 killed Player24 using Shotgun
+28/04/2023 20:46:30 - Player01 killed Player05 using Pistol
+28/04/2023 20:48:50 - Player09 killed Player13 using Assault Rifle
+28/04/2023 20:51:10 - Player17 killed Player22 using Sniper Rifle
+28/04/2023 20:53:30 - Player01 killed Player09 using Knife
+28/04/2023 20:55:50 - Player17 killed Player01 using Grenade
+28/04/2023 20:57:00 - Match 11348970 has ended (Player17 wins)
