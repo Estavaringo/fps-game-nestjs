@@ -4,7 +4,7 @@ import { Player } from '../entities/player.entity';
 
 const matchStartRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - New match (\d+) has started/;
 const killRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - (.+?)(?:\(\D\))? killed (.+?)(?:\(\D\))? using (.+)/;
-const worldKillRegex = /\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2} - <WORLD> killed (.+?)(?:\(\D\))? by .+/;
+const worldKillRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - <WORLD> killed (.+?)(?:\(\D\))? by .+/;
 const matchEndRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - Match (\d+) has ended/;
 const teamRegex = /\((\D)\)(?:.+\((\D)\))?/;
 const maxPlayers = 20;
@@ -66,7 +66,9 @@ export class LogParserService {
                     victim = new Player(victimName, victimTeam);
                     currentGame.players.push(victim);
                 }
-                victim.deaths++;
+                victim.deaths.push({
+                    time: time,
+                });
 
                 continue;
             }
@@ -76,7 +78,8 @@ export class LogParserService {
                 if (!currentGame) {
                     continue;
                 }
-                const victimName = worldKillMatch[1];
+                const time = this.parseDateTime(worldKillMatch[1]);
+                const victimName = worldKillMatch[2];
                 let victimTeam = ""
 
                 const teamMatch = line.match(teamRegex)
@@ -89,7 +92,9 @@ export class LogParserService {
                     victim = new Player(victimName, victimTeam);
                     currentGame.players.push(victim);
                 }
-                victim.deaths++;
+                victim.deaths.push({
+                    time: time,
+                });
                 continue;
             }
 

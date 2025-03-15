@@ -50,7 +50,7 @@ export class RankingService {
                 }
 
                 globalPlayer.frags = globalPlayer.frags.concat(player.frags)
-                globalPlayer.deaths += player.deaths
+                globalPlayer.deaths = globalPlayer.deaths.concat(player.deaths)
             }
         }
         const globalGame: Game = { id: 'global', start: new Date(), end: new Date(), players: globalPlayers }
@@ -68,7 +68,7 @@ export class RankingService {
             playerRankings.push({
                 name: player.name,
                 frags: frags,
-                deaths: player.deaths,
+                deaths: player.deaths.length,
                 preferredWeapon: preferredWeapon,
                 killStreak: 0, //TODO: Calculate killstreak
                 awards: awards,
@@ -117,7 +117,7 @@ export class RankingService {
     private getAwards(player: Player): string[] {
         let awards: string[] = [];
 
-        if (player.deaths == 0) {
+        if (player.deaths.length == 0) {
             awards.push(immortalAward)
         }
 

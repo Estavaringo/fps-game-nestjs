@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { LogParserService } from './log-parser.service';
-import { Player } from '../entities/player.entity';
+import { Death } from '../entities/death.entity';
 
 describe('LogParserService Unit Tests', () => {
   let service: LogParserService;
@@ -36,13 +36,18 @@ describe('LogParserService Unit Tests', () => {
         time: new Date(2019, 3, 23, 15, 36, 4),
         weapon: "M16",
       }],
-      deaths: 0,
+      deaths: [],
       team: "",
     })
     expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
-      deaths: 2,
+      deaths: [{
+        time: new Date(2019, 3, 23, 15, 36, 4),
+      },
+      {
+        time: new Date(2019, 3, 23, 15, 36, 33),
+      }],
       team: "",
     })
   });
@@ -76,13 +81,18 @@ describe('LogParserService Unit Tests', () => {
         time: new Date(2019, 3, 23, 15, 36, 4),
         weapon: "M16",
       }],
-      deaths: 0,
+      deaths: [],
       team: "",
     })
     expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
-      deaths: 2,
+      deaths: [{
+        time: new Date(2019, 3, 23, 15, 36, 4),
+      },
+      {
+        time: new Date(2019, 3, 23, 15, 36, 33),
+      }],
       team: "",
     })
 
@@ -98,13 +108,20 @@ describe('LogParserService Unit Tests', () => {
         time: new Date(2021, 3, 23, 16, 26, 4),
         weapon: "AK47",
       }],
-      deaths: 1,
+      deaths: [{
+        time: new Date(2021, 3, 23, 16, 37, 33),
+      }],
       team: "",
     })
     expect(games[1].players.find(p => p.name === "Marcus")).toEqual({
       name: "Marcus",
       frags: [],
-      deaths: 2,
+      deaths: [{
+        time: new Date(2021, 3, 23, 16, 26, 4),
+      },
+      {
+        time: new Date(2021, 3, 23, 16, 36, 33),
+      }],
       team: "",
     })
   });
@@ -139,19 +156,26 @@ describe('LogParserService Unit Tests', () => {
         time: new Date(2019, 3, 23, 15, 38, 19),
         weapon: "AK47",
       }],
-      deaths: 0,
+      deaths: [],
       team: "A",
     })
     expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
-      deaths: 2,
+      deaths: [{
+        time: new Date(2019, 3, 23, 15, 36, 4),
+      },
+      {
+        time: new Date(2019, 3, 23, 15, 36, 33),
+      }],
       team: "B",
     })
     expect(games[0].players.find(p => p.name === "Josh")).toEqual({
       name: "Josh",
       frags: [],
-      deaths: 1,
+      deaths: [{
+        time: new Date(2019, 3, 23, 15, 38, 19),
+      }],
       team: "A",
     })
   });

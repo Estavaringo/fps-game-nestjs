@@ -52,7 +52,9 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 5, 0),
             weapon: "AK47",
           }],
-          deaths: 1,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 10, 0),
+          }],
           team: "",
         },
         {
@@ -63,7 +65,15 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 10, 0),
             weapon: "AK47",
           }],
-          deaths: 3,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 2, 0),
+          },
+          {
+            time: new Date(2025, 0, 1, 12, 5, 0),
+          },
+          {
+            time: new Date(2025, 0, 1, 12, 5, 0),
+          }],
           team: "",
         }
       ]
@@ -114,13 +124,18 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 5, 0),
             weapon: "M16",
           }],
-          deaths: 0,
+          deaths: [],
           team: "",
         },
         {
           name: "Nick",
           frags: [],
-          deaths: 2,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 2, 0),
+          },
+          {
+            time: new Date(2025, 0, 1, 12, 5, 0),
+          }],
           team: "",
         }
       ]
@@ -171,13 +186,18 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 5, 0),
             weapon: "M16",
           }],
-          deaths: 0,
+          deaths: [],
           team: "",
         },
         {
           name: "Nick",
           frags: [],
-          deaths: 2,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 2, 0),
+          },
+          {
+            time: new Date(2025, 0, 1, 12, 5, 0),
+          }],
           team: "",
         }
       ]
@@ -228,7 +248,9 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 5, 0),
             weapon: "M16",
           }],
-          deaths: 1,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 10, 0),
+          }],
           team: "",
         },
         {
@@ -239,7 +261,12 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 10, 0),
             weapon: "AK47",
           }],
-          deaths: 2,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 2, 0),
+          },
+          {
+            time: new Date(2025, 0, 1, 12, 5, 0),
+          }],
           team: "",
         }
       ]
@@ -263,7 +290,9 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 5, 0),
             weapon: "M16",
           }],
-          deaths: 1,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 10, 0),
+          }],
           team: "",
         },
         {
@@ -274,7 +303,12 @@ describe('RankingService unit tests', () => {
             time: new Date(2025, 0, 1, 12, 10, 0),
             weapon: "AK47",
           }],
-          deaths: 2,
+          deaths: [{
+            time: new Date(2025, 0, 1, 12, 2, 0),
+          },
+          {
+            time: new Date(2025, 0, 1, 12, 5, 0),
+          }],
           team: "",
         }
       ]
