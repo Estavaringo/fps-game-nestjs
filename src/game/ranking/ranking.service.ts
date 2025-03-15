@@ -75,7 +75,13 @@ export class RankingService {
             });
         }
 
-        playerRankings.sort((a, b) => b.frags - a.frags);
+        playerRankings.sort((a, b) => {
+            if (b.frags !== a.frags) {
+                return b.frags - a.frags;
+            } else {
+                return a.deaths - b.deaths;
+            }
+        });
 
         return playerRankings;
     }
