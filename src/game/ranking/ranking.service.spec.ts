@@ -89,13 +89,13 @@ describe('RankingService unit tests', () => {
       name: "Roman",
       frags: 3,
       deaths: 1,
-      killStreak: 0,
+      killStreak: 3,
       preferredWeapon: "M16",
       awards: [],
     })
     expect(rankings[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
-      killStreak: 0,
+      killStreak: 1,
       frags: 1,
       deaths: 3,
       preferredWeapon: "AK47",
@@ -151,7 +151,7 @@ describe('RankingService unit tests', () => {
       name: "Roman",
       frags: 2,
       deaths: 0,
-      killStreak: 0,
+      killStreak: 2,
       preferredWeapon: "M16",
       awards: ["immortal"],
     })
@@ -325,13 +325,13 @@ describe('RankingService unit tests', () => {
       name: "Roman",
       frags: 4,
       deaths: 2,
-      killStreak: 0,
+      killStreak: 4,
       preferredWeapon: "M16",
       awards: [],
     })
     expect(rankings[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
-      killStreak: 0,
+      killStreak: 1,
       frags: 1,
       deaths: 2,
       preferredWeapon: "AK47",
@@ -339,7 +339,7 @@ describe('RankingService unit tests', () => {
     })
     expect(rankings[0].players.find(p => p.name === "Josh")).toEqual({
       name: "Josh",
-      killStreak: 0,
+      killStreak: 1,
       frags: 1,
       deaths: 2,
       preferredWeapon: "AK47",

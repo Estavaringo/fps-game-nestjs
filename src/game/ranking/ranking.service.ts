@@ -64,13 +64,14 @@ export class RankingService {
             const preferredWeapon = this.getPreferredWeapon(player.frags);
             const frags = this.calculateFrags(player.frags);
             const awards = this.getAwards(player);
+            const killstreak = this.calculateKillStreak(player);
 
             playerRankings.push({
                 name: player.name,
                 frags: frags,
                 deaths: player.deaths.length,
                 preferredWeapon: preferredWeapon,
-                killStreak: 0, //TODO: Calculate killstreak
+                killStreak: killstreak,
                 awards: awards,
             });
         }
@@ -87,7 +88,7 @@ export class RankingService {
     }
 
     private getPreferredWeapon(frags: Frag[]): string {
-        if (frags.length == 0) {
+        if (frags.length === 0) {
             return "";
         }
 
@@ -117,10 +118,43 @@ export class RankingService {
     private getAwards(player: Player): string[] {
         let awards: string[] = [];
 
-        if (player.deaths.length == 0) {
+        if (player.deaths.length === 0) {
             awards.push(immortalAward)
         }
 
         return awards;
+    }
+
+    private calculateKillStreak(player: Player): number {
+        const frags = player.frags.filter(frag => !frag.isFriendlyFire)
+        if (frags.length === 0) {
+            return 0;
+        }
+
+        if (player.deaths.length === 0) {
+            return frags.length;
+        }
+
+        const fragTimes = frags.map(frag => frag.time.getTime());
+        const deathTimes = player.deaths.map(death => death.time.getTime());
+
+        console.log(fragTimes)
+
+        let maxKillStreak = 0;
+        let currentKillStreak = 0;
+        let deathIndex = 0;
+
+        for (const fragTime of fragTimes) {
+            if (deathIndex < deathTimes.length && fragTime > deathTimes[deathIndex]) {
+                maxKillStreak = Math.max(maxKillStreak, currentKillStreak);
+                currentKillStreak = 1;
+                deathIndex++;
+            } else {
+                currentKillStreak++;
+            }
+        }
+        maxKillStreak = Math.max(maxKillStreak, currentKillStreak);
+
+        return maxKillStreak;
     }
 }
