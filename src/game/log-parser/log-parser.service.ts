@@ -7,6 +7,7 @@ const killRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - (.+?)(?:\(\D\))? ki
 const worldKillRegex = /\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2} - <WORLD> killed (.+?)(?:\(\D\))? by .+/;
 const matchEndRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - Match (\d+) has ended/;
 const teamRegex = /\((\D)\)(?:.+\((\D)\))?/;
+const maxPlayers = 20;
 
 @Injectable()
 export class LogParserService {
@@ -98,7 +99,11 @@ export class LogParserService {
                     continue;
                 }
                 currentGame.end = this.parseDateTime(matchEndMatch[1]);
-                games.push(currentGame);
+
+                // Games with more than max players are discarded
+                if (currentGame.players.length <= maxPlayers) {
+                    games.push(currentGame);
+                }
                 currentGame = null;
             }
         }

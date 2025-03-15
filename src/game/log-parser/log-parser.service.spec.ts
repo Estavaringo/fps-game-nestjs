@@ -170,4 +170,40 @@ describe('LogParserService Unit Tests', () => {
     expect(games).toHaveLength(0);
   });
 
+
+  it('should not parse if match has more than max players', () => {
+    const log = `
+      28/04/2023 20:00:00 - New match 11348970 has started (25 players)
+      28/04/2023 20:02:10 - Player01 killed Player02 using SMG
+      28/04/2023 20:04:30 - Player03 killed Player04 using Shotgun
+      28/04/2023 20:06:50 - Player05 killed Player06 using Pistol
+      28/04/2023 20:09:10 - Player07 killed Player08 using Assault Rifle
+      28/04/2023 20:11:30 - Player09 killed Player10 using Sniper Rifle
+      28/04/2023 20:13:50 - Player11 killed Player12 using Knife
+      28/04/2023 20:16:10 - Player13 killed Player14 using Grenade
+      28/04/2023 20:18:30 - Player15 killed Player16 using Rocket Launcher
+      28/04/2023 20:20:50 - Player17 killed Player18 using SMG
+      28/04/2023 20:23:10 - Player19 killed Player20 using Shotgun
+      28/04/2023 20:25:30 - <WORLD> killed Player21 by ZONE
+      28/04/2023 20:27:50 - Player22 killed Player23 using Pistol
+      28/04/2023 20:30:10 - Player24 killed Player25 using Assault Rifle
+      28/04/2023 20:32:30 - Player01 killed Player03 using Sniper Rifle
+      28/04/2023 20:34:50 - Player05 killed Player07 using Knife
+      28/04/2023 20:37:10 - Player09 killed Player11 using Grenade
+      28/04/2023 20:39:30 - Player13 killed Player15 using Rocket Launcher
+      28/04/2023 20:41:50 - Player17 killed Player19 using SMG
+      28/04/2023 20:44:10 - Player22 killed Player24 using Shotgun
+      28/04/2023 20:46:30 - Player01 killed Player05 using Pistol
+      28/04/2023 20:48:50 - Player09 killed Player13 using Assault Rifle
+      28/04/2023 20:51:10 - Player17 killed Player22 using Sniper Rifle
+      28/04/2023 20:53:30 - Player01 killed Player09 using Knife
+      28/04/2023 20:55:50 - Player17 killed Player01 using Grenade
+      28/04/2023 20:57:00 - Match 11348970 has ended (Player17 wins)
+    `;
+
+    const games = service.execute(log);
+
+    expect(games).toHaveLength(0);
+  });
+
 });
