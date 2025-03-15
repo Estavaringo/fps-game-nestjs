@@ -138,8 +138,6 @@ export class RankingService {
         const fragTimes = frags.map(frag => frag.time.getTime());
         const deathTimes = player.deaths.map(death => death.time.getTime());
 
-        console.log(fragTimes)
-
         let maxKillStreak = 0;
         let currentKillStreak = 0;
         let deathIndex = 0;
