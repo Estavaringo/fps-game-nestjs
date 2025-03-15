@@ -4,6 +4,7 @@ import { SaveGamesService } from './save-games/save-games.service';
 import { IGameRepository } from './repositories/game.repository';
 import { MemoryRepository } from './repositories/adapters/memory.repository';
 import { RankingService } from './ranking/ranking.service';
+import { CliService } from './cli/cli.service';
 
 @Module({
   providers: [
@@ -13,7 +14,8 @@ import { RankingService } from './ranking/ranking.service';
       provide: IGameRepository,
       useClass: MemoryRepository //implementation could be changed by an environment variable
     },
-    RankingService
+    RankingService,
+    CliService
   ]
 })
 export class GameModule { }

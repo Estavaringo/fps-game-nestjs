@@ -19,6 +19,10 @@ export class RankingService {
         let games: Game[] = await this.gameRepository.findAll();
         let rankings: Ranking[] = [];
 
+        if (games.length == 0) {
+            return rankings;
+        }
+
         if (global) {
             games = [this.createGlobalGame(games)];
         }
