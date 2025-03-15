@@ -9,7 +9,7 @@
 25/04/2023 10:16:20 - Alice(A) killed Frank(B) using Pistol
 25/04/2023 10:18:55 - George(B) killed Eve(A) using Shotgun
 25/04/2023 10:21:30 - David(A) killed Bob(B) using SMG
-25/04/2023 10:23:40 - Eve(A) killed George(B) using Grenade
+25/04/2023 10:23:40 - Eve(A) killed Alice(A) using Grenade
 25/04/2023 10:25:00 - Match 11348967 has ended (Team A wins)
 
 26/04/2023 14:30:00 - New match 11348968 has started
