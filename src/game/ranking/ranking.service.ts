@@ -6,7 +6,7 @@ import { Player } from '../entities/player.entity';
 import { PlayerRanking } from '../entities/player-ranking.entity';
 import { Frag } from '../entities/frag.entity';
 
-// immortalAward is given to a player that wins a match without dying
+// immortalAward is given to a player that finishs a match without dying
 const immortalAward = "immortal"
 
 @Injectable()
