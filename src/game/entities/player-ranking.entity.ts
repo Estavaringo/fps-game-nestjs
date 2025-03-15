@@ -1,6 +1,8 @@
 export class PlayerRanking {
-    position: number;
-    player: string;
+    name: string;
+    frags: number;
+    deaths: number;
     awards: string[];
     killStreak: number;
+    preferredWeapon: string;
 }

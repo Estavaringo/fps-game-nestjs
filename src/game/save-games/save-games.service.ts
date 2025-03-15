@@ -5,7 +5,7 @@ import { Game } from '../entities/game.entity';
 @Injectable()
 export class SaveGamesService {
     constructor(
-        @Inject(IGameRepository) protected readonly gameRepository: IGameRepository,
+        @Inject(IGameRepository) private readonly gameRepository: IGameRepository,
     ) { }
 
     async execute(games: Game[]): Promise<void> {
