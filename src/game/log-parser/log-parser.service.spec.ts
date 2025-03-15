@@ -37,11 +37,13 @@ describe('LogParserService Unit Tests', () => {
         weapon: "M16",
       }],
       deaths: 0,
+      team: "",
     })
     expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
       deaths: 2,
+      team: "",
     })
   });
 
@@ -75,13 +77,13 @@ describe('LogParserService Unit Tests', () => {
         weapon: "M16",
       }],
       deaths: 0,
-      team: undefined,
+      team: "",
     })
     expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
       deaths: 2,
-      team: undefined,
+      team: "",
     })
 
     expect(games[1].id).toBe("11348966");
@@ -97,13 +99,13 @@ describe('LogParserService Unit Tests', () => {
         weapon: "AK47",
       }],
       deaths: 1,
-      team: undefined,
+      team: "",
     })
     expect(games[1].players.find(p => p.name === "Marcus")).toEqual({
       name: "Marcus",
       frags: [],
       deaths: 2,
-      team: undefined,
+      team: "",
     })
   });
 
@@ -120,10 +122,10 @@ describe('LogParserService Unit Tests', () => {
 
     expect(games).toHaveLength(1);
     expect(games[0].id).toBe("11348965123");
-    expect(games[0].start).toBe(new Date(2019, 3, 23, 15, 34, 22));
-    expect(games[0].end).toBe(new Date(2019, 3, 23, 15, 39, 22));
-    expect(games[0].players).toHaveLength(2);
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].start.getTime()).toBe(new Date(2019, 3, 23, 15, 34, 22).getTime());
+    expect(games[0].end?.getTime()).toBe(new Date(2019, 3, 23, 15, 39, 22).getTime());
+    expect(games[0].players).toHaveLength(3);
+    expect(games[0].players.find(p => p.name === "Roman")).toEqual({
       name: "Roman",
       frags: [{
         isFriendlyFire: false,
@@ -140,15 +142,13 @@ describe('LogParserService Unit Tests', () => {
       deaths: 0,
       team: "A",
     })
-
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].players.find(p => p.name === "Nick")).toEqual({
       name: "Nick",
       frags: [],
       deaths: 2,
       team: "B",
     })
-
-    expect(games[0].players).toContain<Player>({
+    expect(games[0].players.find(p => p.name === "Josh")).toEqual({
       name: "Josh",
       frags: [],
       deaths: 1,

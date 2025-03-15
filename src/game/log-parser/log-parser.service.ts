@@ -3,9 +3,10 @@ import { Game } from '../entities/game.entity';
 import { Player } from '../entities/player.entity';
 
 const matchStartRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - New match (\d+) has started/;
-const killRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - (.+?) killed (.+?) using (.+)/;
-const worldKillRegex = /\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2} - <WORLD> killed (.+?) by .+/;
+const killRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - (.+?)(?:\(\D\))? killed (.+?)(?:\(\D\))? using (.+)/;
+const worldKillRegex = /\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2} - <WORLD> killed (.+?)(?:\(\D\))? by .+/;
 const matchEndRegex = /(\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}) - Match (\d+) has ended/;
+const teamRegex = /\((\D)\)(?:.+\((\D)\))?/;
 
 @Injectable()
 export class LogParserService {
@@ -38,23 +39,30 @@ export class LogParserService {
                 const killerName = killMatch[2];
                 const victimName = killMatch[3];
                 const weapon = killMatch[4];
+                let killerTeam = ""
+                let victimTeam = ""
+
+                const teamMatch = line.match(teamRegex)
+                if (teamMatch) {
+                    killerTeam = teamMatch[1]
+                    victimTeam = teamMatch[2]
+                }
 
                 let killer = currentGame.players.find(p => p.name === killerName);
                 if (!killer) {
-                    killer = new Player(killerName);
+                    killer = new Player(killerName, killerTeam);
                     currentGame.players.push(killer);
                 }
                 killer.frags.push({
                     playerKilled: victimName,
                     weapon,
                     time,
-                    // Team support is not implemented yet
-                    isFriendlyFire: false,
+                    isFriendlyFire: (killerTeam != "" && killerTeam == victimTeam),
                 });
 
                 let victim = currentGame.players.find(p => p.name === victimName);
                 if (!victim) {
-                    victim = new Player(victimName);
+                    victim = new Player(victimName, victimTeam);
                     currentGame.players.push(victim);
                 }
                 victim.deaths++;
@@ -68,10 +76,16 @@ export class LogParserService {
                     continue;
                 }
                 const victimName = worldKillMatch[1];
+                let victimTeam = ""
+
+                const teamMatch = line.match(teamRegex)
+                if (teamMatch) {
+                    victimTeam = teamMatch[1]
+                }
 
                 let victim = currentGame.players.find(p => p.name === victimName);
                 if (!victim) {
-                    victim = new Player(victimName);
+                    victim = new Player(victimName, victimTeam);
                     currentGame.players.push(victim);
                 }
                 victim.deaths++;
