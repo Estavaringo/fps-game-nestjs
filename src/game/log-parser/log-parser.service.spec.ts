@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { LogParserService } from './log-parser.service';
 import { Player } from '../entities/player.entity';
 
-describe('LogParserService', () => {
+describe('LogParserService Unit Tests', () => {
   let service: LogParserService;
 
   beforeEach(async () => {
