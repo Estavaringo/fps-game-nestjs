@@ -1,8 +1,7 @@
 import { Game } from "../entities/game.entity";
 
 export interface IGameRepository {
-    insertMany(games: Game[]): Promise<void>;
-    findByID(id: string): Promise<Game | null>;
+    insert(games: Game[]): Promise<void>;
     findAll(): Promise<Game[]>;
 }
 
