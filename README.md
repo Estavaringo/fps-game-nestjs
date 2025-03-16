@@ -1,6 +1,6 @@
 # Descrição
 
-Projeto implementa um processador de logs para jogos de fps, capaz de analisar arquivos de log e gerar rankings de jogadores por partida e um ranking global.
+Esse projeto implementa um processador de logs para jogos de fps, capaz de analisar arquivos de log e gerar rankings de jogadores por partida e um ranking global.
 
 ## Tecnologias Utilizadas
 
@@ -25,6 +25,7 @@ As seguintes funcionalidades foram implementadas no projeto:
 
 * Parser de logs de jogos a partir de arquivo de texto
   * O parser é capaz de identificar partidas com times ou não
+    * Os times devem ser identificados no final do nome de cada jogador, com apenas uma letra entre parenteses. Ex: NomePlayer(A)
   * Partidas com mais de 20 jogadores são consideradas inválidas e não são salvas.
 * Armazenamento das informações das partidas em memória
 * Geração de ranking por partida e global
